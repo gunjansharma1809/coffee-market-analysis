@@ -85,7 +85,7 @@ streamlit run dashboard/app.py
  
 ### Read-only database access (for reviewers)
 A read-only `reviewer` role is provisioned (see `sql/03_reviewer_role.sql`).
-The read-only connection string is provided separately with the submission.
+The read-only connection string is provided separately with the submission and should be configured in your local `.env` file as DATABASE_URL.
  
 ---
  
