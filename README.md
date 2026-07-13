@@ -67,11 +67,15 @@ Place the three source files in `data/raw/`:
 *(Data as of July 2026. Sources revise periodically.)*
  
 ### Run the pipeline
+The entire database is built with a **single command**:
 ```bash
-python pipeline/run_sql.py sql/01_schema.sql   # create the schema
-python pipeline/load.py                         # resolve, reshape, load
-python pipeline/run_sql.py sql/02_marts.sql     # build the analytical marts
+python pipeline/main.py
 ```
+This runs all stages in dependency order — schema -> load -> marts — with
+per-stage logging and a final row-count smoke test. It is idempotent: re-running
+rebuilds the database identically.
+ 
+*(Individual stages can also be run separately if needed: `run_sql.py sql/01_schema.sql`, `load.py`, `run_sql.py sql/02_marts.sql`.)*
  
 ### Launch the dashboard
 ```bash
